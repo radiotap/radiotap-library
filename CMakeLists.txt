@@ -17,8 +17,8 @@ target_link_libraries(parse radiotap)
 
 
 add_custom_target(radiotap_check ALL
-		  COMMAND ${CMAKE_SOURCE_DIR}/check/check.sh ${CMAKE_BINARY_DIR}
-		  DEPENDS ${CMAKE_SOURCE_DIR}/check/*
-		  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/check/
+		  COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/check/check.sh ${CMAKE_CURRENT_BINARY_DIR}
+		  DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/check/*
+		  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/check/
 		  COMMENT "Check examples")
 add_dependencies(radiotap_check parse)
