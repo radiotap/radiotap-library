@@ -100,7 +100,7 @@ int ieee80211_radiotap_iterator_init(
 	if (radiotap_header->it_version)
 		return -EINVAL;
 
-	/* sanity check for allowed length and radiotap length field */
+	/* validity check for allowed length and radiotap length field */
 	if (max_length < get_unaligned_le16(&radiotap_header->it_len))
 		return -EINVAL;
 
@@ -132,7 +132,7 @@ int ieee80211_radiotap_iterator_init(
 			iterator->_arg += sizeof(uint32_t);
 
 			/*
-			 * check for insanity where the present bitmaps
+			 * check for the case where the present bitmaps
 			 * keep claiming to extend up to or even beyond the
 			 * stated radiotap header length
 			 */
@@ -331,7 +331,7 @@ int ieee80211_radiotap_iterator_next(
 		iterator->_arg += size;
 
 		/*
-		 * check for insanity where we are given a bitmap that
+		 * check for the case where we are given a bitmap that
 		 * claims to have more arg content than the length of the
 		 * radiotap section.  We will normally end up equalling this
 		 * max_length on the last arg, never exceeding it.
