@@ -1,11 +1,11 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.11)
 project(radiotap)
 
-add_definitions("-D_BSD_SOURCE -DRADIOTAP_SUPPORT_OVERRIDES")
+add_definitions("-D_DEFAULT_SOURCE -DRADIOTAP_SUPPORT_OVERRIDES")
 
 add_library(radiotap STATIC radiotap.c)
 set_target_properties(radiotap PROPERTIES
-		      COMPILE_FLAGS "-Wall -Wextra")
+		      COMPILE_FLAGS "-Wall -Wextra -Wno-address-of-packed-member")
 
 install(TARGETS radiotap DESTINATION lib)
 install(FILES radiotap.h radiotap_iter.h DESTINATION include)
